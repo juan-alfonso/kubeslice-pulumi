@@ -269,7 +269,7 @@ def create_resources_for_worker(cluster_name, worker_provider):
     )
 
     # Install Prometheus if kubeslice enterprise enabled
-    if kubeslice_enterprise:
+    if enterprise_enabled:
       prometehus_release = k8s.helm.v3.Release(
         f"prometheus-{cluster_name}",
         chart="prometheus",
