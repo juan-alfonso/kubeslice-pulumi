@@ -16,7 +16,6 @@ import pulumiverse_time as time
 # Read and set default values for cluster configuration including node types,
 # counts, kubernetes version, and regional settings
 config = pulumi.Config()
-linode_token = config.require("linode_token")
 lke_gw_node_type = config.get("lke_gw_node_type") or "g6-standard-2"
 lke_worker_node_type = config.get("lke_worker_node_type") or "g6-standard-2"
 lke_controller_node_type = config.get("lke_controller_node_type") or "g6-standard-1"
@@ -48,12 +47,6 @@ else:
 ###############################################################################
 # Controller Cluster Setup
 ###############################################################################
-
-# Initialize Linode provider with authentication token
-linode_provider = linode.Provider(
-    "linode-provider",
-    token=linode_token  # Pass the Linode token explicitly
-)
 
 # Create the KubeSlice controller LKE cluster
 # This cluster will manage the worker clusters and slice configurations
