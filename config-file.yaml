@@ -1,0 +1,35 @@
+config:
+  lke_controller_node_count: "3"
+  lke_controller_node_type: g6-standard-1
+  lke_version: "1.32"
+  region_lke_controller: es-mad
+  kubeslice_enterprise:
+    enabled: True
+    username: <your-kubeslice-enterprise-username>
+    password: <your-kubeslice-enterprise-password>
+    email: <your-kubeslice-enterprise-email>
+  worker_clusters:
+    worker1:
+      gw_node_count: 2
+      gw_node_type: g6-standard-2
+      region: es-mad
+      worker_node_count: 1
+      worker_node_type: g6-standard-2
+      application_frontend: True
+      application_backend: False
+    worker2:
+      gw_node_count: 2
+      gw_node_type: g6-standard-2
+      region: fr-par
+      worker_node_count: 1
+      worker_node_type: g6-standard-2
+      application_frontend: False
+      application_backend: True
+    # worker3:
+    #   gw_node_count: 2
+    #   gw_node_type: g6-standard-2
+    #   region: gb-lon
+    #   worker_node_count: 1
+    #   worker_node_type: g6-standard-2
+    #   application_frontend: True
+    #   application_backend: False

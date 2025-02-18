@@ -1,0 +1,4 @@
+pulumi>=3.0.0
+pulumi-linode>=4.34.1
+pulumi_kubernetes>=4.0.0
+pulumiverse_time
