@@ -4,7 +4,7 @@ config:
   lke_version: "1.32"
   region_lke_controller: es-mad
   kubeslice_enterprise:
-    enabled: True
+    enabled: False
     username: <your-kubeslice-enterprise-username>
     password: <your-kubeslice-enterprise-password>
     email: <your-kubeslice-enterprise-email>
