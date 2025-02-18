@@ -1,0 +1,15 @@
+apiVersion: networking.kubeslice.io/v1beta1
+kind: ServiceExport
+metadata:
+ name: details
+ namespace: bookinfo
+spec:
+ slice: slice-bookinfo  #Replace Slice Name
+ selector:
+   matchLabels:
+     app: details
+ ingressEnabled: false
+ ports:
+ - name: http
+   containerPort: 9080
+   protocol: TCP

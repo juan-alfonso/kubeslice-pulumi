@@ -1,0 +1,15 @@
+apiVersion: networking.kubeslice.io/v1beta1
+kind: ServiceExport
+metadata:
+ name: reviews
+ namespace: bookinfo
+spec:
+ slice: slice-bookinfo  #Replace Slice Name
+ selector:
+   matchLabels:
+     app: reviews
+ ingressEnabled: false
+ ports:
+ - name: http
+   containerPort: 9080
+   protocol: TCP
