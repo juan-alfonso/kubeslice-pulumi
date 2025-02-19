@@ -31,6 +31,8 @@ cd <repository-directory>
 ```
 
 2. Create a Python virtual environment and install the required libraries:
+> [!TIP]
+> Configure a [local pulumi state](https://www.pulumi.com/docs/iac/concepts/state-and-backends/#local-filesystem) using `pulumi login --local` before executing any pulumi command
 ```bash
 pulumi install
 ```
