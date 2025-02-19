@@ -168,6 +168,16 @@ Common issues and solutions:
    - Verify the ServiceExport/Import status is TRUE: `kubectl get serviceimport -n bookinfo`
    - Check pod status: `kubectl get pods -n bookinfo`
    - Review Istio sidecar injection: `kubectl describe pod -n bookinfo <pod-name>`
+4. **Known deployment error**
+   - Re-execute the command `pulumi up --config-file=config-file.yaml --skip-preview` when the following error occurs:
+   ```
+   Diagnostics:
+    pulumi:pulumi:Stack (kubeslice-kubeslice):
+      error: kubernetes:yaml/v2:ConfigGroup resource 'kubeslice-project' has a problem: marshaling properties: awaiting input property "resources": failed to determine if the following GVK is namespaced: controller.kubeslice.io/v1alpha1, Kind=Project
+
+   ```
+   This is a known pulumi bug: https://github.com/pulumi/pulumi-kubernetes/issues/3176
+
 
 ## Project Structure
 
