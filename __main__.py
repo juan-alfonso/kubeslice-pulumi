@@ -16,13 +16,9 @@ import pulumiverse_time as time
 # Read and set default values for cluster configuration including node types,
 # counts, kubernetes version, and regional settings
 config = pulumi.Config()
-lke_gw_node_type = config.get("lke_gw_node_type") or "g6-standard-2"
-lke_worker_node_type = config.get("lke_worker_node_type") or "g6-standard-2"
 lke_controller_node_type = config.get("lke_controller_node_type") or "g6-standard-1"
-lke_gw_node_count = config.get_int("lke_gw_node_count") or 1
-lke_worker_node_count = config.get_int("lke_worker_node_count") or 3
 lke_controller_node_count = config.get_int("lke_controller_node_count") or 3
-lke_version = config.get("lke_version") or "1.31"
+lke_version = config.get("lke_version") or "1.32"
 region_lke_controller = config.require("region_lke_controller")
 worker_clusters = config.require_object("worker_clusters")
 project_name = "bookinfo-project"
@@ -282,7 +278,7 @@ def create_resources_for_worker(cluster_name, worker_provider):
       )
 
     # Kubeslice Worker HelmRelease
-    if kubeslice_enterprise:
+    if enterprise_enabled:
        kubeslice_worker_values = pulumi.Output.all(
           controller_kubeconfig,
           worker_clusters_resources[cluster_name].kubeconfig
