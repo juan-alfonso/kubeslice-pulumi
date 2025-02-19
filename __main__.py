@@ -459,16 +459,17 @@ def deploy_application(worker_provider, application_namespace, cluster_name):
     backend_enabled = cluster_config.get("application_backend", False)
 
     #Create application namespace with istio enabled
-    namespace_application = k8s.core.v1.Namespace(
-        f"namespace-application-{cluster_name}",
-        metadata={
-            "name": f"{application_namespace}",
-            "labels": {
-              "istio-injection": "enabled"
-          }
-        },
-        opts=pulumi.ResourceOptions(provider=worker_provider)
-    )
+    if frontend_enabled or backend_enabled:
+      namespace_application = k8s.core.v1.Namespace(
+          f"namespace-application-{cluster_name}",
+          metadata={
+              "name": f"{application_namespace}",
+              "labels": {
+                "istio-injection": "enabled"
+            }
+          },
+          opts=pulumi.ResourceOptions(provider=worker_provider)
+      )
 
     # Introduce a 30-second delay to wait for namespace kubeslice labels to inject the sidecards
     wait30_seconds_sidecars = time.Sleep(f"wait30Seconds_sidecars_{cluster_name}", create_duration="30s", opts = pulumi.ResourceOptions(depends_on=[kubeslice_slice_config]))
