@@ -5,9 +5,9 @@ config:
   region_lke_controller: es-mad
   kubeslice_enterprise:
     enabled: False
-    username: <your-kubeslice-enterprise-username>
-    password: <your-kubeslice-enterprise-password>
-    email: <your-kubeslice-enterprise-email>
+    username: "<your-kubeslice-enterprise-username>"
+    password: "<your-kubeslice-enterprise-password>"
+    email: "<your-kubeslice-enterprise-email>"
   worker_clusters:
     worker1:
       gw_node_count: 2
