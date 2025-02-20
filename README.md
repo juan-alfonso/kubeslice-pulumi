@@ -13,7 +13,8 @@ The deployment consists of:
 
 ### Kubeslice Architecture Diagram
 
-image here
+![image](https://github.com/user-attachments/assets/c997c547-4794-4531-ba60-3057a3fee9e9)
+
 
 ## Prerequisites
 
